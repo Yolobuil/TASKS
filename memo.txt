@@ -1,0 +1,32 @@
+プロジェクトの作成
+django-admin startproject プロジェクト名 .
+
+アプリケーションの作成
+django-admin startapp アプリケーション名
+
+localサーバーの起動
+①manage.pyをRunManage
+
+②右上のmanageを選択
+
+③parametersにrunserveと追記しOK
+
+④右上の緑の再生ボタンでローカルサーバの起動
+
+http://127.0.0.1:8000/
+
+jsonwebトークンに有効期限をつけられる
+→時間を記述できる from datetime import timedelta を使用
+
+フロントエンドからバックエンドへのアクセスを許可するURLがある
+CORS_ORIGIN_WHITELISTにReactのローカルほすとを記述
+
+settingsはプロジェクトのセッティングを各場所
+プロジェクトのurlsはアプリケーションのurlsをまとめる場所（サービスとコントローラーみたいな感じする）
+アプリケーションのurlsはパスとビューを紐づける場所
+modelsはDBの構造を定義する場所
+
+各アプリケーションで定義したモデルを元に、djangoが自動でDBを作ってくれる
+①コマンド：python manage.py makemigrations
+②Create model~と表示
+③python manage.py migrate でデータベースの構造に落としこみ。
