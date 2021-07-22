@@ -30,3 +30,13 @@ modelsはDBの構造を定義する場所
 ①コマンド：python manage.py makemigrations
 ②Create model~と表示
 ③python manage.py migrate でデータベースの構造に落としこみ。
+
+superuserを作成できる
+python manage.py createsuperuser
+
+Admin上でProfileはDjangoに存在するアカウントが出てくる
+
+serializersとは
+主に、フロントエンドからDB（Django）にgetメソッドで何か値を取りたいとJSONのリクエストが来たとして、
+その時にどういうJSONの内容を返すかということを具体的に細かく設定するもの。
+ある属性に関してはResponseとして渡したくないとか、ReadOnlyにしたいとかいう細かい設定ができる

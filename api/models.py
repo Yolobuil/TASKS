@@ -17,7 +17,7 @@ def upload_avatar_path(instance, filename):
 
 
 # Create your models here.
-# purofileモデル Djangoのユーザモデルを紐づける OneToOneFieldでDjangoと紐付け。アバター画像を属性として持っている
+# profileモデル Djangoのユーザモデルを紐づける OneToOneFieldでDjangoと紐付け。アバター画像を属性として持っている
 # on_deleteにCASCADEのオプションをつけることで、ユーザモデルが削除された場合にプロフィールオブジェクトが自動削除
 class Profile(models.Model):
     user_profile = models.OneToOneField(
@@ -50,7 +50,7 @@ def __str__(self):
 class Task(models.Model):
     # statusの選択肢の要素
     STATUS = (
-        ('1', 'Not standerd'),
+        ('1', 'Not started'),
         ('2', 'On going'),
         ('3', 'Done'),
     )
@@ -72,7 +72,7 @@ class Task(models.Model):
     # 日時DateTimeField auto_now_add=をTrueにしておくことで、Taskが作成された際に、自動でその時の時間をDBに登録
     created_at = models.DateTimeField(auto_now_add=True)
     # addは不要。更新するたびにその時の日時を付与する
-    update_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.task
