@@ -24,12 +24,17 @@ class ListUserView(generics.ListAPIView):
 
 
 # Retrieveは特定のオブジェクトを検索して返してきてくれる
+# RetrieveUpdateDestroyAPIViewは検索とアップデートの役割
 class LoginUserView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
 
     def get_object(self):
         # request.userはログインユーザを指す
         return self.request.user
+
+    def update(self, request, *args, **kwargs):
+        response = {'message': 'PUT method is not allowed'}
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
 
 class ProfileViewSet(viewsets.ModelViewSet):
@@ -51,7 +56,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
-    queryset = Category.obujects.all()
+    queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
     # 使わないメソッドの無効化

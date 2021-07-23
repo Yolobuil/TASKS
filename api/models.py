@@ -41,9 +41,8 @@ class Category(models.Model):
     # CharFieldを使ってアイテム属性を持たせる。最大文字列は１００文字
     item = models.CharField(max_length=100)
 
-
-def __str__(self):
-    return self.item
+    def __str__(self):
+        return self.item
 
 
 # Task model
